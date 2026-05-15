@@ -1,0 +1,20 @@
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Distribution staging folders (built per-version, attached to GitHub Releases)
+portable-v*/
+
+# Local backup of release archives (kept locally for history, not in repo)
+releases/
+
+# Editor / OS junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
