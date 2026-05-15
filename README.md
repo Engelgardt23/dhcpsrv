@@ -1,6 +1,6 @@
 # dhcpsrv
 
-[![Latest release](https://img.shields.io/github/v/release/engelgardt2024-lang/dhcpsrv)](https://github.com/engelgardt2024-lang/dhcpsrv/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/Engelgardt23/dhcpsrv)](https://github.com/Engelgardt23/dhcpsrv/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A tiny portable **DHCP server** for the laptop of a storage/server engineer.
@@ -14,7 +14,7 @@ Built for the “plug the cable in, watch a BMC pop up with an IP” workflow du
 
 ## Download
 
-Grab the latest release: [**releases page**](https://github.com/engelgardt2024-lang/dhcpsrv/releases/latest).
+Grab the latest release: [**releases page**](https://github.com/Engelgardt23/dhcpsrv/releases/latest).
 The asset is `dhcpsrv-portable-vX.Y.Z.zip` (~12 MB).
 
 ## Run
