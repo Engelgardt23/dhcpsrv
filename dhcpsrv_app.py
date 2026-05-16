@@ -1,5 +1,5 @@
 """
-dhcpsrv v1.0.0 - portable single-exe edition.
+dhcpsrv v1.1.0 - portable single-exe edition.
 made by engelgardt
 
 This file combines what previously lived in dhcpsrv.ps1 + dhcpsrv.py:
@@ -14,6 +14,7 @@ Build:
 """
 
 import os, sys, ctypes, json, subprocess, signal, socket, struct, threading, time
+import urllib.request, webbrowser
 from collections import deque
 from datetime  import datetime
 from concurrent.futures import ThreadPoolExecutor
@@ -36,7 +37,8 @@ def _enable_vt():
         pass
 _enable_vt()
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
+GITHUB_REPO  = "Engelgardt23/dhcpsrv"
 
 # Fixed heights used by the Layout — used to compute the clients table fit
 HEADER_LINES = 5
@@ -80,6 +82,40 @@ def require_admin():
         # Re-launch elevated; original exits
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(f'"{a}"' for a in sys.argv), None, 1)
         sys.exit(0)
+
+
+# ---------- update check ----------
+def _parse_version(s):
+    try:
+        s = (s or "").strip().lstrip("v")
+        return tuple(int(x) for x in s.split(".")[:3])
+    except Exception:
+        return (0, 0, 0)
+
+def check_for_update():
+    """Query GitHub for the latest release. If newer than __version__, prompt to open the page."""
+    try:
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/releases/latest"
+        req = urllib.request.Request(url, headers={
+            "Accept":     "application/vnd.github+json",
+            "User-Agent": f"dhcpsrv/{__version__}",
+        })
+        with urllib.request.urlopen(req, timeout=3) as r:
+            data = json.loads(r.read().decode("utf-8", errors="replace"))
+        latest = (data.get("tag_name") or "").strip()
+        page   = data.get("html_url") or f"https://github.com/{GITHUB_REPO}/releases/latest"
+        if _parse_version(latest) > _parse_version(__version__):
+            console.rule("[bold yellow]Update available")
+            console.print(f"Current: [dim]v{__version__}[/]    Latest: [bold green]{latest}[/]")
+            try:
+                if Confirm.ask("Open the download page in your browser?", default=True):
+                    webbrowser.open(page)
+            except (EOFError, KeyboardInterrupt):
+                pass
+            console.print()
+    except Exception:
+        # Offline / GitHub rate-limit / API error — skip silently.
+        pass
 
 
 # ---------- helpers ----------
@@ -362,6 +398,8 @@ def main():
     console.print(f"[bold cyan]dhcpsrv v{__version__}[/] - portable laptop-side DHCP server")
     console.print("[dim]made by engelgardt[/]")
     console.print()
+
+    check_for_update()
 
     nic = select_nic()
     if not nic: input("Press Enter to exit"); return
