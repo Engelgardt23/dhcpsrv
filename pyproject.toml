@@ -1,0 +1,26 @@
+[build-system]
+requires      = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name            = "dhcpsrv"
+description     = "Portable laptop-side DHCP server for storage/server engineers."
+readme          = "README.md"
+requires-python = ">=3.10"
+license         = { text = "MIT" }
+authors         = [{ name = "engelgardt" }]
+dependencies    = ["rich>=13"]
+dynamic         = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/Engelgardt23/dhcpsrv"
+Issues   = "https://github.com/Engelgardt23/dhcpsrv/issues"
+
+[project.scripts]
+dhcpsrv = "dhcpsrv.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "dhcpsrv.__version__" }
