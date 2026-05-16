@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build dependencies
+        run: python -m pip install --upgrade pip pyinstaller rich
+
+      - name: Resolve version from tag
+        id: ver
+        shell: bash
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build executable
+        run: python -m PyInstaller --onefile --uac-admin --console --name dhcpsrv dhcpsrv_app.py
+
+      - name: Package portable folder
+        shell: pwsh
+        run: |
+          $ver = '${{ steps.ver.outputs.version }}'
+          $folder = "dhcpsrv-v$ver"
+          New-Item -ItemType Directory -Path $folder | Out-Null
+          Copy-Item dist/dhcpsrv.exe $folder/
+          @"
+          dhcpsrv v$ver - portable edition
+          made by engelgardt
+
+          Minimal laptop-side DHCP server for storage/server engineers.
+
+          USAGE
+            Double-click dhcpsrv.exe.
+            Accept the UAC prompt (admin needed to bind UDP/67 and reconfigure the NIC).
+            Pick the NIC plugged into your server/switch - that's the only question.
+            Press Ctrl+C to stop.
+
+          DEFAULTS
+            Server IP : 10.10.10.1/24
+            Pool      : 10.10.10.2 .. 10.10.10.51   (50 addresses)
+            Lease     : 7200 seconds (2 hours)
+            TFTP opt  : server IP
+
+          NOTES
+            - Nothing is installed. Delete the folder to remove.
+            - UAC prompt appears every time (no scheduled-task shortcut in portable mode).
+            - If Tftpd32 has its DHCP module enabled, disable it - UDP/67 is then taken.
+          "@ | Out-File -FilePath "$folder/README.txt" -Encoding UTF8
+          Compress-Archive -Path $folder -DestinationPath "dhcpsrv-portable-v$ver.zip"
+
+      - name: Generate SHA-256 checksum
+        shell: pwsh
+        run: |
+          $ver = '${{ steps.ver.outputs.version }}'
+          $zip = "dhcpsrv-portable-v$ver.zip"
+          $hash = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLower()
+          "$hash  $zip" | Out-File -FilePath "$zip.sha256" -Encoding ASCII -NoNewline
+          Get-Content "$zip.sha256"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dhcpsrv-portable-v${{ steps.ver.outputs.version }}.zip
+            dhcpsrv-portable-v${{ steps.ver.outputs.version }}.zip.sha256
+          generate_release_notes: true
