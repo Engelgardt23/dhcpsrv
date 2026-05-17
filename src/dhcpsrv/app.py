@@ -40,7 +40,6 @@ def main() -> None:
 
     console = Console(log_path=False)
     console.print(f"[bold cyan]dhcpsrv v{__version__}[/] - portable laptop-side DHCP server")
-    console.print("[dim]made by engelgardt[/]")
     console.print()
 
     check_for_update(console)

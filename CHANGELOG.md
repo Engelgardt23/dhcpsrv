@@ -6,6 +6,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-05-17
+### Changed
+- Dropped the `made by engelgardt` line from the startup banner too — author credit lives in the README only.
+### Added
+- Embedded application icon in the exe (via PyInstaller `--icon assets/icon.ico`).
+
 ## [1.1.1] - 2026-05-16
 ### Changed
 - The persistent header panel no longer prints the `made by engelgardt` line. Author credit moves to the one-off startup banner and the README only — the always-on UI stays tighter.
