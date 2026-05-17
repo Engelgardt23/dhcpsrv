@@ -6,6 +6,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-05-16
+### Changed
+- The persistent header panel no longer prints the `made by engelgardt` line. Author credit moves to the one-off startup banner and the README only — the always-on UI stays tighter.
+
 ## [1.1.0] - 2026-05-16
 ### Added
 - Auto-update check on startup. Polls GitHub `/releases/latest` with a 3-second timeout. If a newer version is available, prints a yellow notice and offers to open the download page in your browser. Silent on offline / API errors.

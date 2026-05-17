@@ -53,7 +53,7 @@ class Ui:
         st = self.server.stats
         cfg = self.server.cfg
         body = (
-            f"[bold cyan]dhcpsrv v{__version__}[/]   [dim]made by engelgardt[/]\n"
+            f"[bold cyan]dhcpsrv v{__version__}[/]\n"
             f"Server: [bold]{cfg.server_ip}[/]/{cfg.netmask}    "
             f"Pool: [bold]{int2ip(cfg.pool[0])}–{int2ip(cfg.pool[-1])}[/]    "
             f"Lease: [bold]{cfg.lease}s[/]    "
