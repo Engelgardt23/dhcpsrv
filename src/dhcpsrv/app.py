@@ -9,6 +9,7 @@ import threading
 
 from rich.console import Console
 from rich.prompt  import Confirm, Prompt
+from rich.table   import Table
 
 from .              import __version__
 from .platform_win  import enable_vt, require_admin
@@ -39,10 +40,18 @@ def main() -> None:
     require_admin()
 
     console = Console(log_path=False)
-    console.print(f"[bold cyan]dhcpsrv v{__version__}[/] - portable laptop-side DHCP server")
-    console.print()
 
-    check_for_update(console)
+    title  = f"[bold cyan]dhcpsrv v{__version__}[/] - portable laptop-side DHCP server"
+    latest = check_for_update()
+    if latest:
+        header = Table.grid(expand=True)
+        header.add_column(justify="left",  ratio=1)
+        header.add_column(justify="right")
+        header.add_row(title, f"[dim]update available ({latest})[/]")
+        console.print(header)
+    else:
+        console.print(title)
+    console.print()
 
     nic = _select_nic(console)
     if not nic:

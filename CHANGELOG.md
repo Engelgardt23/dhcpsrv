@@ -6,6 +6,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.1.3] - 2026-05-17
+### Changed
+- Update check no longer interrupts startup with an interactive prompt. If a newer release is available, the header line now shows a quiet `update available (vX.Y.Z)` hint right-aligned in dim grey — no key press required.
+### Fixed
+- Bumped `__version__` from `1.1.1` to `1.1.3` after the v1.1.2 release packaged a binary that still self-reported as v1.1.1 (the source constant was not bumped before tagging). The source is now once again the single source of truth.
+
 ## [1.1.2] - 2026-05-17
 ### Changed
 - Dropped the `made by engelgardt` line from the startup banner too — author credit lives in the README only.
@@ -34,6 +40,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Scrollback cleared on startup so mouse-wheel doesn't expose pre-launch text.
 - MIT licensed.
 
-[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Engelgardt23/dhcpsrv/releases/tag/v1.0.0
