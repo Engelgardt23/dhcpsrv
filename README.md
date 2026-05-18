@@ -45,8 +45,8 @@ The asset is `dhcpsrv-portable-vX.Y.Z.zip` (~12 MB).
 └─────────────────────────────────────────────────────────────────────────┘
 ┌─ Clients ───────────────────────────────────────────────────────────────┐
 │  # │ IP           │ Hostname     │ MAC               │ Last seen │ Ping │
-│  1 │ 10.10.10.2   │ vegman-r120  │ a0:c5:f2:13:57:46 │ 17:42:18  │  OK  │
-│  2 │ 10.10.10.3   │ vegman-s220  │ 70:b3:d5:11:22:33 │ 17:42:21  │  --  │
+│  1 │ 10.10.10.2   │ server-01    │ a0:c5:f2:13:57:46 │ 17:42:18  │  OK  │
+│  2 │ 10.10.10.3   │ server-02    │ 70:b3:d5:11:22:33 │ 17:42:21  │  --  │
 └─────────────────────────────────────────────────────────────────────────┘
 ┌─ Events ────────────────────────────────────────────────────────────────┐
 │ [17:42:18] DISCOVER a0:c5:f2:13:57:46 → OFFER 10.10.10.2                │
@@ -56,7 +56,7 @@ The asset is `dhcpsrv-portable-vX.Y.Z.zip` (~12 MB).
 
 ## Typical scenarios
 
-- **VEGMAN with shared LOM** — one cable into the BMC/host port, BMC and the host OS both get IPs from this DHCP.
+- **Server with shared LOM** — one cable into the BMC/host port, BMC and the host OS both get IPs from this DHCP.
 - **8-port switch** — laptop on one port, up to 7 servers on the rest; the 50-address pool covers everyone.
 - **Direct cable into a dedicated Mgmt port** — single client (the BMC).
 
