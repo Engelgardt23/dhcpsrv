@@ -3,7 +3,7 @@
 [![Последний релиз](https://img.shields.io/github/v/release/Engelgardt23/dhcpsrv)](https://github.com/Engelgardt23/dhcpsrv/releases/latest)
 [![Лицензия: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[English](README.md) | Русский
+[🇺🇸 English](README.md) | 🇷🇺 Русский
 
 Маленький портативный **DHCP-сервер** для ноутбука инженера хранения / серверов.
 Двойной клик — выбрал сетевую — готово. Живая таблица клиентов, статус ping, счётчики пакетов. Ничего не устанавливается, Python на целевой машине не нужен.
