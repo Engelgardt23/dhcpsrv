@@ -6,5 +6,5 @@ The single source of truth for the project version. Bump this before tagging
 a release; CI reads the tag, the code reads this constant.
 """
 
-__version__ = "1.1.3"
+__version__ = "1.2.0"
 GITHUB_REPO = "Engelgardt23/dhcpsrv"

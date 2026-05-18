@@ -3,6 +3,8 @@
 [![Latest release](https://img.shields.io/github/v/release/Engelgardt23/dhcpsrv)](https://github.com/Engelgardt23/dhcpsrv/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+🇬🇧 English | [🇷🇺 На русском](README.ru.md)
+
 A tiny portable **DHCP server** for the laptop of a storage/server engineer.
 One double-click — pick a NIC — done. Live table of clients, ping status, packet counters. No install, no Python required on the target machine.
 

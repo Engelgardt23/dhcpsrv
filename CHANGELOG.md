@@ -6,6 +6,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-05-18
+### Added
+- Russian UI translation. On first launch the application asks which language to use (`1) English`, `2) Русский`) and writes the answer to a fresh `config.ini` next to `dhcpsrv.exe`. To change the language later, edit `language = en` / `language = ru` in that file — the comment at the top of the file explains how, in both languages.
+- `config.ini` becomes the future home for other settable defaults (pool, lease, server IP) — currently only `[General] language` is consumed.
+- Bilingual `README.ru.md` linked from the main `README.md`.
+
 ## [1.1.3] - 2026-05-17
 ### Changed
 - Update check no longer interrupts startup with an interactive prompt. If a newer release is available, the header line now shows a quiet `update available (vX.Y.Z)` hint right-aligned in dim grey — no key press required.
@@ -40,7 +46,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Scrollback cleared on startup so mouse-wheel doesn't expose pre-launch text.
 - MIT licensed.
 
-[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.3...HEAD
+[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.3...v1.2.0
 [1.1.3]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.0...v1.1.1

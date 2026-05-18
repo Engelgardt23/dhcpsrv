@@ -15,6 +15,7 @@ from datetime    import datetime
 from typing      import Callable, Optional
 
 from .network import ping_one
+from .i18n    import t as _t
 
 
 # ---------- helpers ----------
@@ -174,8 +175,8 @@ class DhcpServer:
         try:
             s.bind(("0.0.0.0", 67))
         except OSError as e:
-            self.log(f"[bold red]bind UDP/67 failed:[/] {e}")
-            self.log("[yellow]Another DHCP service (Tftpd32 DHCP, ICS, Windows DHCP) may be running.[/]")
+            self.log(f"[bold red]{_t('bind_failed')}[/] {e}")
+            self.log(f"[yellow]{_t('bind_hint')}[/]")
             stop.set()
             return
 
@@ -200,7 +201,7 @@ class DhcpServer:
                 self.stats["discovers"] += 1
                 ipn = self.alloc_ip(mac)
                 if ipn is None:
-                    self.log(f"[dim][{now_s()}][/] [red]DISCOVER[/] {mac} → [red]POOL EXHAUSTED[/]")
+                    self.log(f"[dim][{now_s()}][/] [red]DISCOVER[/] {mac} → [red]{_t('pool_exhausted')}[/]")
                     continue
                 self.touch_client(mac, ipn, host)
                 s.sendto(self.build_reply(data, 2, ipn), ("255.255.255.255", 68))
