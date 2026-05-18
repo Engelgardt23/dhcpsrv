@@ -56,7 +56,7 @@ STRINGS: dict[str, dict[str, str]] = {
         "no_events":            "(no events yet)",
     },
     "ru": {
-        "tagline":              "— портативный DHCP-сервер для инженера",
+        "tagline":              "— портативный DHCP-сервер",
         "update_available":     "доступно обновление ({tag})",
         "available_adapters":   "Доступные адаптеры",
         "no_adapters":          "Подходящие проводные адаптеры не найдены.",
