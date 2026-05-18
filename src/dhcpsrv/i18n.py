@@ -20,7 +20,7 @@ STRINGS: dict[str, dict[str, str]] = {
     "en": {
         # app.py / startup
         "tagline":              "- portable laptop-side DHCP server",
-        "update_available":     "update available ({tag})",
+        "update_available":     "Update available ({tag})",
         "available_adapters":   "Available adapters",
         "no_adapters":          "No suitable wired adapters found.",
         "select_adapter":       "Select adapter number",
@@ -57,7 +57,7 @@ STRINGS: dict[str, dict[str, str]] = {
     },
     "ru": {
         "tagline":              "— портативный DHCP-сервер",
-        "update_available":     "доступно обновление ({tag})",
+        "update_available":     "Доступно обновление ({tag})",
         "available_adapters":   "Доступные адаптеры",
         "no_adapters":          "Подходящие проводные адаптеры не найдены.",
         "select_adapter":       "Введите номер адаптера",

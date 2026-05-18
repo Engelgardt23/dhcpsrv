@@ -7,7 +7,10 @@ dist/
 __pycache__/
 *.py[cod]
 
-# Distribution staging folders (built per-version, attached to GitHub Releases)
+# Local build cache (prod/test/old portable folders per version)
+builds/
+
+# Legacy staging folders (kept for compatibility with old checkouts)
 portable-v*/
 
 # Local backup of release archives (kept locally for history, not in repo)

@@ -11,7 +11,7 @@ from rich.console import Console
 from rich.prompt  import Confirm, Prompt
 from rich.table   import Table
 
-from .              import __version__
+from .              import __version__, GITHUB_REPO
 from .platform_win  import enable_vt, require_admin
 from .update_check  import check_for_update
 from .network       import list_adapters, set_static_ip, revert_to_dhcp
@@ -53,10 +53,12 @@ def main() -> None:
     title  = f"[bold cyan]dhcpsrv v{__version__}[/] {t('tagline')}"
     latest = check_for_update()
     if latest:
+        release_url = f"https://github.com/{GITHUB_REPO}/releases/latest"
+        notice      = t("update_available", tag=latest)
         header = Table.grid(expand=True)
         header.add_column(justify="left",  ratio=1)
         header.add_column(justify="right")
-        header.add_row(title, f"[dim]{t('update_available', tag=latest)}[/]")
+        header.add_row(title, f"[dim][link={release_url}]{notice}[/link][/]")
         console.print(header)
     else:
         console.print(title)

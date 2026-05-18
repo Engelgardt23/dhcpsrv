@@ -6,6 +6,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-05-18
+### Changed
+- The `Update available (vX.Y.Z)` hint in the header is now a clickable hyperlink that opens the GitHub releases page (OSC 8 terminal hyperlink). Modern terminals (Windows Terminal, VS Code, WezTerm, most Linux/macOS terminals) render it as a link — `Ctrl+Click` to follow. Older consoles show the plain text, so nothing breaks.
+- Russian tagline tightened: dropped the `для инженера` phrase, the wording was carried over from an earlier draft and felt out of place.
+
 ## [1.2.0] - 2026-05-18
 ### Added
 - Russian UI translation. On first launch the application asks which language to use (`1) English`, `2) Русский`) and writes the answer to a fresh `config.ini` next to `dhcpsrv.exe`. To change the language later, edit `language = en` / `language = ru` in that file — the comment at the top of the file explains how, in both languages.
@@ -46,7 +51,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Scrollback cleared on startup so mouse-wheel doesn't expose pre-launch text.
 - MIT licensed.
 
-[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.3...v1.2.0
 [1.1.3]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/Engelgardt23/dhcpsrv/compare/v1.1.1...v1.1.2
