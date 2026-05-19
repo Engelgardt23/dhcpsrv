@@ -53,7 +53,7 @@ def main() -> None:
     title  = f"[bold cyan]dhcpsrv v{__version__}[/] {t('tagline')}"
     latest = check_for_update()
     if latest:
-        release_url = f"https://github.com/{GITHUB_REPO}/releases/latest"
+        release_url = f"https://git.engelgardt23.ru/{GITHUB_REPO}/releases/latest"
         notice      = t("update_available", tag=latest)
         header = Table.grid(expand=True)
         header.add_column(justify="left",  ratio=1)
